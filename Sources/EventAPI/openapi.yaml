@@ -1,0 +1,54 @@
+openapi: "3.1.0"
+info:
+  title: "EventService"
+  version: "1.0.0"
+servers:
+  - url: "https://localhost:8080/api"
+    description: "Example service deployment."
+paths:
+  /events:
+    get:
+      operationId: "listEvents"
+      responses:
+        "200":
+          description: "A success response with all events."
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Event"
+    post:
+      operationId: "createEvent"
+      requestBody:
+        description: "The event to create."
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Event'
+      responses:
+        '201':
+          description: "A success indicating the event was created."
+        '400':
+          description: "A failure indicating the event wasn't created."
+components:
+  schemas:
+    Event:
+      type: "object"
+      description: "An event."
+      properties:
+        name:
+          type: "string"
+          description: "The event's name."
+        date:
+          type: "string"
+          format: "date"
+          description: "The day of the event."
+        attendee:
+          type: "string"
+          description: "The name of the person attending the event."
+      required:
+        - "name"
+        - "date"
+        - "attendee"
