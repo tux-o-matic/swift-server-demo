@@ -22,10 +22,6 @@ let package = Package(
       from: "1.0.1"
     ),
     .package(
-      url: "https://github.com/vapor/postgres-nio",
-      from: "1.19.1"
-    ),
-    .package(
         url: "https://github.com/apple/swift-log",
         from: "1.5.4"
     ),
@@ -61,10 +57,6 @@ let package = Package(
         .product(
           name: "Vapor",
           package: "vapor"
-        ),
-        .product(
-            name: "PostgresNIO",
-          package: "postgres-nio"
         ),
         .product(
             name: "Logging",
